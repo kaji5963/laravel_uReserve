@@ -22,11 +22,15 @@ class Event extends Model
 
     protected function eventDate(): Attribute
     {
-        // return new Attribute(
-        //     get: fn() => Carbon::parse($this->start_date)->format('Y年m月d日')
-        // );
         return Attribute::make(
             get: fn() => Carbon::parse($this->start_date)->format('Y年m月d日')
+        );
+    }
+
+    protected function editEventDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->start_date)->format('Y-m-d')
         );
     }
 
