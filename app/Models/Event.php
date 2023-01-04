@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\User;
 
 class Event extends Model
 {
@@ -23,28 +24,34 @@ class Event extends Model
     protected function eventDate(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->start_date)->format('Y年m月d日')
+            get: fn () => Carbon::parse($this->start_date)->format('Y年m月d日')
         );
     }
 
     protected function editEventDate(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->start_date)->format('Y-m-d')
+            get: fn () => Carbon::parse($this->start_date)->format('Y-m-d')
         );
     }
 
     protected function startTime(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->start_date)->format('H時i分')
+            get: fn () => Carbon::parse($this->start_date)->format('H時i分')
         );
     }
 
     protected function endTime(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->end_date)->format('H時i分')
+            get: fn () => Carbon::parse($this->end_date)->format('H時i分')
         );
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'reservations')
+            ->withPivot('id', 'number_of_people', 'canceled_date');
     }
 }
