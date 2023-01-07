@@ -38,7 +38,7 @@ class ReservationSeeder extends Seeder
                 'user_id' => 2,
                 'event_id' => 2,
                 'number_of_people' => 2,
-                'canceled_date' => '2023-01-05 06:00:00',
+                'canceled_date' => '2023-01-09 06:00:00',
             ],
         ]);
     }
