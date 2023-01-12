@@ -51,7 +51,7 @@ php artisan strage:link
 プロフィールページで画像アップロード機能を使う場合は
 .envのAPP_URLを下記に変更してください。
 
-# APP_URL=http://localhost
+#APP_URL=http://localhost
 APP_URL=http://127.0.0.1:8000
 
 Tailwindcss 3.xの、JustTime機能により
